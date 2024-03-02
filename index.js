@@ -29,7 +29,7 @@ async function main() {
     maxFeePerGas: Utils.parseUnits('20', 'gwei'),
     nonce: nonce,
     type: 2,
-    chainId: 5, // sepolia transaction
+    chainId: 11155111, // sepolia transaction
   };
 
   const rawTransaction = await wallet.signTransaction(transaction);
