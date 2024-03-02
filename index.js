@@ -18,22 +18,22 @@ const wallet = new Wallet(TEST_PRIVATE_KEY);
 async function main() {
   const nonce = await alchemy.core.getTransactionCount(
     wallet.address,
-    'latest'
+    "latest"
   );
 
   const transaction = {
     to: RECIPIENT_ADDRESS,
-    value: Utils.parseEther('0.001'), // 0.001 worth of ETH being sent
-    gasLimit: '21000',
-    maxPriorityFeePerGas: Utils.parseUnits('5', 'gwei'),
-    maxFeePerGas: Utils.parseUnits('20', 'gwei'),
+    value: Utils.parseEther("0.001"), // 0.001 worth of ETH being sent
+    gasLimit: "21000",
+    maxPriorityFeePerGas: Utils.parseUnits("5", "gwei"),
+    maxFeePerGas: Utils.parseUnits("20", "gwei"),
     nonce: nonce,
     type: 2,
     chainId: 11155111, // sepolia transaction
   };
 
   const rawTransaction = await wallet.signTransaction(transaction);
-  console.log('Raw tx: ', rawTransaction);
+  console.log("Raw tx: ", rawTransaction);
   const tx = await alchemy.core.sendTransaction(rawTransaction);
   console.log(`https://spolia.etherscan.io/tx/${tx.hash}`);
 }
